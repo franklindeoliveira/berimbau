@@ -45,6 +45,9 @@
         
         document.querySelector("#tocador").addEventListener("keydown", function(event) {
             alert(event.key)
+            alert(event.code)
+            alert(event.keyCode)
+            console.log(event)
             if (event.key == "d") {
                 new Audio("sounds/dom.mp3").play()
             }
