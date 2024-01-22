@@ -18,17 +18,17 @@
     
     <h2>Batidas (notas)</h2>
     <ul>
-        <li>d (dom) - Batida com o DobrÃ£o desencostada do Arame</li>
-        <li>i (dim) - Batida com o DobrÃ£o fortemente encostada no Arame</li>
-        <li>t (tchi) - Batida com o DobrÃ£o levemente encostada no Arame</li>
-        <li>o (domchi) - Batida "arranhando" o DobrÃ£o no Arame</li>
+        <li>d (dom) - Batida com o Dobrão desencostada do Arame</li>
+        <li>i (dim) - Batida com o Dobrão fortemente encostada no Arame</li>
+        <li>t (tchi) - Batida com o Dobrão levemente encostada no Arame</li>
+        <li>o (domchi) - Batida "arranhando" o Dobrão no Arame</li>
     </ul>
     
     <h2>Toque Angola</h1>
     <p>t, t, o, i</p>
 
     <h2>Toque São Bento Pequeno de Angola</h1>
-    <p>t, t, i, d, d</p>
+    <p>t, t, i, d</p>
 
     <h2>Toque São Bento Grande de Angola</h1>
     <p>t, t, i, d, d</p>
@@ -43,7 +43,7 @@
         var domchi = new Audio("sounds/domchi.mp3")
         domchi.autoPlay = false
         
-        document.querySelector("#tocador").addEventListener("keydown", function(event) {
+        document.querySelector("#tocador").addEventListener("keyup", async function(event) {
             if (event.target.value.toLowerCase() == "d") {
                 new Audio("sounds/dom.mp3").play()
             }
