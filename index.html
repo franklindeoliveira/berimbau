@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toques de Berimbau</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <h1>Toques de Berimbau</h1>
+    <p>Para tocar o Berimbau use as teclas: d, i, t, o</p>
+    
+    <h2>Batidas (notas)</h2>
+    <ul>
+        <li>d (dom) - Batida com o Dobrão desencostada do Arame</li>
+        <li>i (dim) - Batida com o Dobrão fortemente encostada no Arame</li>
+        <li>t (tchi) - Batida com o Dobrão levemente encostada no Arame</li>
+        <li>o (domchi) - Batida "arranhando" o Dobrão no Arame</li>
+    </ul>
+    
+    <h2>Toque Angola</h1>
+    <p>t, t, o, i</p>
+
+    <h2>Toque São Bento Pequeno de Angola</h1>
+    <p>t, t, i, d, d</p>
+
+    <h2>Toque São Bento Grande de Angola</h1>
+    <p>t, t, i, d, d</p>
+    
+    <script>       
+        var dom = new Audio("sounds/dom.mp3")
+        dom.autoPlay = false
+        var dim = new Audio("sounds/dim.mp3")
+        dim.autoPlay = false
+        var tchi = new Audio("sounds/tchi.mp3")
+        tchi.autoPlay = false
+        var domchi = new Audio("sounds/domchi.mp3")
+        domchi.autoPlay = false
+        
+        document.onkeypress = function(event) {
+            console.log("start ...")
+            console.log(event)
+
+            if (event.keyCode == "100") {
+                new Audio("sounds/dom.mp3").play()
+            }
+            if (event.keyCode == "105") {
+                new Audio("sounds/tchi.mp3").play()
+            }
+            if (event.keyCode == "116") {
+                new Audio("sounds/dim.mp3").play()
+            }
+            if (event.keyCode == "111") {
+                new Audio("sounds/domchi.mp3").play()
+            }
+        }
+    </script>
+</body>
+</html>
