@@ -44,6 +44,7 @@
         domchi.autoPlay = false
         
         document.addEventListener("keydown", function(event) {
+            alert(event.key)
             if (event.key == "d") {
                 new Audio("sounds/dom.mp3").play()
             }
