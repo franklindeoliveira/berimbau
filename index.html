@@ -14,7 +14,7 @@
     <p>Para tocar o Berimbau use as teclas: d, i, t, o</p>
 
     <label for="tocador">Digite as teclas para tocar a Batida:</label>
-    <input id="tocador" type="text" id="tocador">
+    <input type="text" id="tocador">
     
     <h2>Batidas (notas)</h2>
     <ul>
@@ -44,22 +44,19 @@
         domchi.autoPlay = false
         
         document.querySelector("#tocador").addEventListener("keydown", function(event) {
-            alert(event.key)
-            alert(event.code)
-            alert(event.keyCode)
-            console.log(event)
-            if (event.key == "d") {
+            if (event.target.value.toLowerCase() == "d") {
                 new Audio("sounds/dom.mp3").play()
             }
-            if (event.key == "t") {
+            if (event.target.value.toLowerCase() == "t") {
                 new Audio("sounds/tchi.mp3").play()
             }
-            if (event.key == "i") {
+            if (event.target.value.toLowerCase() == "i") {
                 new Audio("sounds/dim.mp3").play()
             }
-            if (event.key == "o") {
+            if (event.target.value.toLowerCase() == "o") {
                 new Audio("sounds/domchi.mp3").play()
             }
+            event.target.value = ""
         })
     </script>
 </body>
