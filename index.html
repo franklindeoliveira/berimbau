@@ -9,6 +9,9 @@
             width: 50px;
             height: 50px;
         }
+        .toque_personalizado_batidas {
+            width: 500px;
+        }
     </style>
 </head>
 <body>
@@ -22,12 +25,14 @@
         <li><button data-toque="dim">&#11044;</button> dim - Batida com o Dobrão <em>fortemente</em> encostada no Arame</li>
         <li><button data-toque="tchi">&#10761;</button> tchi - Batida com o Dobrão <em>levemente</em> encostada no Arame</li>
         <li><button data-toque="domchi">&#8855;</button> domchi - Batida "arranhando" o Dobrão no Arame</li>
-
     </ul>
 
+    Duração da batida
+
     <h2>Criei seu toque!</h1>
+    <p>1s = 1 segundo</p>
     <button id="toque_personalizado">Tocar</button>
-    <input id="toque_personalizado_batidas" type="text" value="tchi tchi dim dom dom">
+    <input id="toque_personalizado_batidas" class="toque_personalizado_batidas" type="text" value="1s tchi, 0.5s tchi, 0.70s dim, 1s dom, 1s dom">
     
     <h2>Toque Angola</h1>
     <button id="toque_angola">Tocar</button>
@@ -39,12 +44,10 @@
 
     <h2>Toque São Bento Grande de Angola</h1>
     <button id="toque_sbg">Tocar</button>
-    <button id="toque_sbg_velocidade_mais">+</button>
-    <span id="toque_sbg_velocidade">1x</span>
     <button id="toque_sbg_velocidade_menos">-</button>    
+    <span id="toque_sbg_velocidade">1x</span>
+    <button id="toque_sbg_velocidade_mais">+</button>
     <p>&#10761; &#10761; &#11044; &#128901; &#128901;</p>
-
-    <h2>Toque São Bento Grande de Angola</h1>
     
     <script>
         toque_sbg_velocidade = 1
@@ -73,24 +76,36 @@
             })
         })
 
-        document.querySelector("#toque_personalizado").addEventListener("click", function(event) {
-            let batidas = document.querySelector("#toque_personalizado_batidas").value.split(" ")
+        document.querySelector("#toque_personalizado").addEventListener("click", tocar)
+
+        function tocar() {
+            let batidasPartes = document.querySelector("#toque_personalizado_batidas").value.split(", ")
             let timeout = 0
-            batidas.forEach(batida => {
-                if (batida == "dom") {
-                    setTimeout(tocarDom, timeout += 500)
+            let velocidade = 1.5
+            batidasPartes.forEach(batidaParte => {
+                let batidaParteSplit = batidaParte.split(" ")
+                let batidaParteIntervalo = Number(batidaParteSplit[0].replace("s", ""))
+                console.log(batidaParteSplit)
+                console.log(batidaParteIntervalo)
+                let batidaParteNota = batidaParteSplit[1]
+                
+                timeout += batidaParteIntervalo * 1000 / velocidade
+
+                if (batidaParteNota == "dom") {
+                    setTimeout(tocarDom, timeout)
                 }
-                if (batida == "tchi") {
-                    setTimeout(tocarTchi, timeout += 500)
+                if (batidaParteNota == "tchi") {
+                    setTimeout(tocarTchi, timeout)
                 }
-                if (batida == "dim") {
-                    setTimeout(tocarDim, timeout += 500)
+                if (batidaParteNota == "dim") {
+                    setTimeout(tocarDim, timeout)
                 }
-                if (batida == "domchi") {
-                    setTimeout(tocarDomChi, timeout += 500)
+                if (batidaParteNota == "domchi") {
+                    setTimeout(tocarDomChi, timeout)
                 }
             })
-        })
+            setTimeout(tocar, timeout)
+        }
 
         document.querySelector("#toque_angola").addEventListener("click", async function(event) {
             let timeout = 0
