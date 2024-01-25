@@ -1,2 +1,3 @@
-# berimbau
-Toque Berimbau Online
+# Berimbau Player
+
+Estude e pratique Berimbau.
