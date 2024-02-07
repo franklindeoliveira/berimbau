@@ -9,7 +9,7 @@
             width: 50px;
             height: 50px;
         }
-        .toque_personalizado_batidas {
+        .toque_batidas {
             width: 500px;
         }
     </style>
@@ -27,141 +27,122 @@
         <li><button data-toque="domchi">&#8855;</button> domchi - Batida "arranhando" o Dobrão no Arame</li>
     </ul>
 
-    Duração da batida
+    <h2>Controles</h1>
+    <button id="parar">Parar</button>
+    <button id="velocidade_menos">-</button>    
+    <span id="velocidade">1x</span>
+    <button id="velocidade_mais">+</button>
 
     <h2>Criei seu toque!</h1>
     <p>1s = 1 segundo</p>
     <button id="toque_personalizado">Tocar</button>
-    <input id="toque_personalizado_batidas" class="toque_personalizado_batidas" type="text" value="1s tchi, 0.5s tchi, 0.70s dim, 1s dom, 1s dom">
+    <input id="toque_personalizado_batidas" class="toque_batidas" type="text" value="1s dom, 1s dim, 1s tchi, 1s domchi">
     
     <h2>Toque Angola</h1>
-    <button id="toque_angola">Tocar</button>
     <p>&#10761; &#10761; &#8855; &#11044;</p>
+    <button id="toque_angola">Tocar</button>
+    <input id="toque_angola_batidas" class="toque_batidas" type="text" value="0.5s tchi, 0.5s tchi, 0.5s domchi, 1.25s dim">
 
     <h2>Toque São Bento Pequeno de Angola</h1>
-    <button id="toque_sbp">Tocar</button>
     <p>&#10761; &#10761; &#11044; &#128901;</p>
+    <button id="toque_sbp">Tocar</button>
+    <input id="toque_sbp_batidas" class="toque_batidas" type="text" value="0.5s tchi, 0.5s tchi, 0.5s dim, 1s dom">
 
     <h2>Toque São Bento Grande de Angola</h1>
-    <button id="toque_sbg">Tocar</button>
-    <button id="toque_sbg_velocidade_menos">-</button>    
-    <span id="toque_sbg_velocidade">1x</span>
-    <button id="toque_sbg_velocidade_mais">+</button>
     <p>&#10761; &#10761; &#11044; &#128901; &#128901;</p>
+    <button id="toque_sbg">Tocar</button>
+    <input id="toque_sbg_batidas" class="toque_batidas" type="text" value="0.5s tchi, 0.5s tchi, 0.5s dim, 1s dom, 0.5 dom">
     
     <script>
-        toque_sbg_velocidade = 1
-        toque_sbp_velocidade = 1
-        toque_angola_velocidade = 1
+        let velocidade = 1
+        let idsReproducao = [];
 
-        document.querySelector("#toque_sbg_velocidade").textContent = toque_sbg_velocidade
+        document.querySelector("#velocidade").textContent = velocidade + "x"
 
         document.querySelectorAll("[data-toque]").forEach(toque => {
             let audio = new Audio(`audio/${toque.dataset.toque}.mp3`)
             audio.autoPlay = false
             toque.addEventListener("click", function(event) {
                 if (event.target.dataset.toque == "dom") {
-                    new Audio("audio/dom.mp3").play()
+                    tocarDom()
                 }
                 if (event.target.dataset.toque == "tchi") {
-                    new Audio("audio/tchi.mp3").play()
+                    tocarTchi()
                 }
                 if (event.target.dataset.toque == "dim") {
-                    new Audio("audio/dim.mp3").play()
+                    tocarDim()
                 }
                 if (event.target.dataset.toque == "domchi") {
-                    new Audio("audio/domchi.mp3").play()
+                    tocarDomChi()
                 }
                 event.target.value = ""
             })
         })
 
-        document.querySelector("#toque_personalizado").addEventListener("click", tocar)
+        document.querySelector("#toque_personalizado").addEventListener("click", () => tocar(document.querySelector("#toque_personalizado_batidas").value.split(", ")))
+        document.querySelector("#toque_angola").addEventListener("click", () => tocar(document.querySelector("#toque_angola_batidas").value.split(", ")))
+        document.querySelector("#toque_sbp").addEventListener("click", () => tocar(document.querySelector("#toque_sbp_batidas").value.split(", ")))
+        document.querySelector("#toque_sbg").addEventListener("click", () => tocar(document.querySelector("#toque_sbg_batidas").value.split(", ")))
+        document.querySelector("#parar").addEventListener("click", parar)
 
-        function tocar() {
-            let batidasPartes = document.querySelector("#toque_personalizado_batidas").value.split(", ")
+        function tocar(batidasPartes) {            
             let timeout = 0
-            let velocidade = 1.5
             batidasPartes.forEach(batidaParte => {
                 let batidaParteSplit = batidaParte.split(" ")
                 let batidaParteIntervalo = Number(batidaParteSplit[0].replace("s", ""))
-                console.log(batidaParteSplit)
-                console.log(batidaParteIntervalo)
                 let batidaParteNota = batidaParteSplit[1]
-                
+                                
                 timeout += batidaParteIntervalo * 1000 / velocidade
 
                 if (batidaParteNota == "dom") {
-                    setTimeout(tocarDom, timeout)
+                    idsReproducao.push(setTimeout(tocarDom, timeout))
                 }
                 if (batidaParteNota == "tchi") {
-                    setTimeout(tocarTchi, timeout)
+                    idsReproducao.push(setTimeout(tocarTchi, timeout))
                 }
                 if (batidaParteNota == "dim") {
-                    setTimeout(tocarDim, timeout)
+                    idsReproducao.push(setTimeout(tocarDim, timeout))
                 }
                 if (batidaParteNota == "domchi") {
-                    setTimeout(tocarDomChi, timeout)
+                    idsReproducao.push(setTimeout(tocarDomChi, timeout))
                 }
             })
-            setTimeout(tocar, timeout)
+            idsReproducao.push(setTimeout(() => tocar(batidasPartes), timeout))
         }
 
-        document.querySelector("#toque_angola").addEventListener("click", async function(event) {
-            let timeout = 0
-            setTimeout(tocarTchi, timeout += 500)
-            setTimeout(tocarTchi, timeout += 500)
-            setTimeout(tocarDomChi, timeout += 500)
-            setTimeout(tocarDim, timeout += 1000)
+        function parar() {
+            idsReproducao.forEach(idReproducao => {
+                clearTimeout(idReproducao)
+            })
+            idsReproducao = []
+        }
+        
+        document.querySelector("#velocidade_mais").addEventListener("click", async function(event) {
+            velocidade += 0.25
+            document.querySelector("#velocidade").value = velocidade
+            document.querySelector("#velocidade").textContent = velocidade + "x"
         })
 
-        document.querySelector("#toque_sbp").addEventListener("click", async function(event) {
-            let timeout = 0
-            setTimeout(tocarTchi, timeout += 500)
-            setTimeout(tocarTchi, timeout += 500)
-            setTimeout(tocarDim, timeout += 500)
-            setTimeout(tocarDom, timeout += 1000)
-        })
-
-        document.querySelector("#toque_sbg").addEventListener("click", async function(event) {
-            let timeout = 0
-            setTimeout(tocarTchi, timeout += 500/toque_sbg_velocidade)
-            setTimeout(tocarTchi, timeout += 500/toque_sbg_velocidade)
-            setTimeout(tocarDim, timeout += 500/toque_sbg_velocidade)
-            setTimeout(tocarDom, timeout += 1000/toque_sbg_velocidade)
-            setTimeout(tocarDom, timeout += 1000/toque_sbg_velocidade)
-        })
-
-        document.querySelector("#toque_sbg_velocidade_mais").addEventListener("click", async function(event) {
-            toque_sbg_velocidade += 0.25
-            document.querySelector("#toque_sbg_velocidade").value = toque_sbg_velocidade
-            document.querySelector("#toque_sbg_velocidade").textContent = toque_sbg_velocidade
-        })
-
-        document.querySelector("#toque_sbg_velocidade_menos").addEventListener("click", async function(event) {
-            toque_sbg_velocidade -= 0.25
-            document.querySelector("#toque_sbg_velocidade").value = toque_sbg_velocidade
-            document.querySelector("#toque_sbg_velocidade").textContent = toque_sbg_velocidade
+        document.querySelector("#velocidade_menos").addEventListener("click", async function(event) {
+            velocidade -= 0.25
+            document.querySelector("#velocidade").value = velocidade
+            document.querySelector("#velocidade").textContent = velocidade + "x"
         })
 
         function tocarTchi() {
-            document.querySelector("[data-toque='tchi']").click()
-        }
-
-        function tocarTchi() {
-            document.querySelector("[data-toque='tchi']").click()
+            new Audio("audio/tchi.mp3").play()
         }
 
         function tocarDomChi() {
-            document.querySelector("[data-toque='domchi']").click()
+            new Audio("audio/domchi.mp3").play()
         }
 
         function tocarDim() {
-            document.querySelector("[data-toque='dim']").click()
+            new Audio("audio/dim.mp3").play()
         }
 
         function tocarDom() {
-            document.querySelector("[data-toque='dom']").click()
+            new Audio("audio/dom.mp3").play()
         }
     </script>
 </body>
