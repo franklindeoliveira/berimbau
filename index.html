@@ -12,6 +12,12 @@
         .toque_batidas {
             width: 500px;
         }
+        .playlist li {
+            border: 1px solid #ffffff;
+        }
+        .playlist li:hover {
+            border: 1px solid #acacac;
+        }
     </style>
 </head>
 <body>
@@ -27,31 +33,52 @@
         <li><button data-toque="domchi">&#8855;</button> domchi - Batida "arranhando" o Dobrão no Arame</li>
     </ul>
 
+    <ul class="playlist">
+        <li>
+            <span>1</span>
+            <button id="toque_angola">Tocar</button>
+            <button class="parar">Parar</button>
+            <span>Toque Angola</span>
+        </li>
+        <li>
+            <span>2</span>
+            <button id="toque_sbp">Tocar</button>
+            <button class="parar">Parar</button>
+            <span>Toque São Bento Pequeno de Angola</span>
+        </li>
+        <li>
+            <span>3</span>
+            <button id="toque_sbg">Tocar</button>
+            <button class="parar">Parar</button>
+            <span>Toque São Bento Grande de Angola</span>
+        </li>
+    </ul>
+
     <h2>Controles</h1>
     <button id="parar">Parar</button>
-    <button id="velocidade_menos">-</button>    
+    <button id="velocidade_menos">-</button>
     <span id="velocidade">1x</span>
     <button id="velocidade_mais">+</button>
 
     <h2>Criei seu toque!</h1>
     <p>1s = 1 segundo</p>
     <button id="toque_personalizado">Tocar</button>
-    <input id="toque_personalizado_batidas" class="toque_batidas" type="text" value="1s dom, 1s dim, 1s tchi, 1s domchi">
+    <input id="toque_personalizado_batidas" class="toque_batidas" type="text" value="1s dom 1s dim 1s tchi 1s domchi">
     
     <h2>Toque Angola</h1>
     <p>&#10761; &#10761; &#8855; &#11044;</p>
-    <button id="toque_angola">Tocar</button>
-    <input id="toque_angola_batidas" class="toque_batidas" type="text" value="0.5s tchi, 0.5s tchi, 0.5s domchi, 1.25s dim">
+    <button id="toque_angola2">Tocar</button>
+    <input id="toque_angola_batidas" class="toque_batidas" type="text" value="0.5s tchi 0.5s tchi 0.5s domchi 1.25s dim">
 
     <h2>Toque São Bento Pequeno de Angola</h1>
     <p>&#10761; &#10761; &#11044; &#128901;</p>
-    <button id="toque_sbp">Tocar</button>
-    <input id="toque_sbp_batidas" class="toque_batidas" type="text" value="0.5s tchi, 0.5s tchi, 0.5s dim, 1s dom">
+    <button id="toque_sbp2">Tocar</button>
+    <input id="toque_sbp_batidas" class="toque_batidas" type="text" value="0.5s tchi 0.5s tchi 0.5s dim 1s dom">
 
     <h2>Toque São Bento Grande de Angola</h1>
     <p>&#10761; &#10761; &#11044; &#128901; &#128901;</p>
-    <button id="toque_sbg">Tocar</button>
-    <input id="toque_sbg_batidas" class="toque_batidas" type="text" value="0.5s tchi, 0.5s tchi, 0.5s dim, 1s dom, 0.5 dom">
+    <button id="toque_sbg2">Tocar</button>
+    <input id="toque_sbg_batidas" class="toque_batidas" type="text" value="0.5s tchi 0.5s tchi 0.5s dim 1s dom 0.5 dom">
     
     <script>
         let velocidade = 1
@@ -79,35 +106,57 @@
             })
         })
 
-        document.querySelector("#toque_personalizado").addEventListener("click", () => tocar(document.querySelector("#toque_personalizado_batidas").value.split(", ")))
-        document.querySelector("#toque_angola").addEventListener("click", () => tocar(document.querySelector("#toque_angola_batidas").value.split(", ")))
-        document.querySelector("#toque_sbp").addEventListener("click", () => tocar(document.querySelector("#toque_sbp_batidas").value.split(", ")))
-        document.querySelector("#toque_sbg").addEventListener("click", () => tocar(document.querySelector("#toque_sbg_batidas").value.split(", ")))
+        document.querySelector("#toque_personalizado").addEventListener("click", () => tocar(document.querySelector("#toque_personalizado_batidas").value))
+        document.querySelector("#toque_angola2").addEventListener("click", () => tocar(document.querySelector("#toque_angola_batidas").value))
+        document.querySelector("#toque_sbp2").addEventListener("click", () => tocar(document.querySelector("#toque_sbp_batidas").value))
+        document.querySelector("#toque_sbg2").addEventListener("click", () => tocar(document.querySelector("#toque_sbg_batidas").value))
         document.querySelector("#parar").addEventListener("click", parar)
+        document.querySelectorAll(".parar").forEach(pararAudio => pararAudio.addEventListener("click", parar))
 
-        function tocar(batidasPartes) {            
-            let timeout = 0
-            batidasPartes.forEach(batidaParte => {
-                let batidaParteSplit = batidaParte.split(" ")
-                let batidaParteIntervalo = Number(batidaParteSplit[0].replace("s", ""))
-                let batidaParteNota = batidaParteSplit[1]
-                                
-                timeout += batidaParteIntervalo * 1000 / velocidade
+        function tocar(batidas) {
+            
+            let batidasPartes = batidas.split(" ")
 
-                if (batidaParteNota == "dom") {
-                    idsReproducao.push(setTimeout(tocarDom, timeout))
-                }
-                if (batidaParteNota == "tchi") {
-                    idsReproducao.push(setTimeout(tocarTchi, timeout))
-                }
-                if (batidaParteNota == "dim") {
-                    idsReproducao.push(setTimeout(tocarDim, timeout))
-                }
-                if (batidaParteNota == "domchi") {
-                    idsReproducao.push(setTimeout(tocarDomChi, timeout))
+            let batidasValidas = true;
+            let msgValidacao = "";
+            batidasPartes.forEach(batida => {
+                if (batida != "dom" && batida != "dim" && batida != "tchi" && batida != "domchi" && !batida.includes("s")) {
+                    batidasValidas = false;
+                    msgValidacao += "Simbolo '" + batida + "'' invalido. "
                 }
             })
-            idsReproducao.push(setTimeout(() => tocar(batidasPartes), timeout))
+
+            if (!batidasValidas) {
+                alert(msgValidacao)
+                return
+            }
+            
+            let timeout = 0
+            let batidaParteIntervalo = 1
+            batidasPartes.forEach(batidaParte => {
+                if (batidaParte.includes("s")) {
+                    batidaParteIntervalo = Number(batidaParte.replace("s", ""))                    
+                } else {
+                    batidaParteIntervalo = 1
+                }
+
+                timeout += batidaParteIntervalo * 1000 / velocidade
+                
+                if (batidaParte == "dom") {
+                    idsReproducao.push(setTimeout(tocarDom, timeout))
+                    batidaParteIntervalo = 1
+                } else if (batidaParte == "tchi") {
+                    idsReproducao.push(setTimeout(tocarTchi, timeout))
+                    batidaParteIntervalo = 1
+                } else if (batidaParte == "dim") {
+                    idsReproducao.push(setTimeout(tocarDim, timeout))
+                    batidaParteIntervalo = 1
+                } else if (batidaParte == "domchi") {
+                    idsReproducao.push(setTimeout(tocarDomChi, timeout))
+                    batidaParteIntervalo = 1
+                }
+            })
+            idsReproducao.push(setTimeout(() => tocar(batidas), timeout))
         }
 
         function parar() {
