@@ -171,13 +171,11 @@
         
         document.querySelector("#velocidade_mais").addEventListener("click", async function(event) {
             velocidade += 0.25
-            document.querySelector("#velocidade").value = velocidade
             document.querySelector("#velocidade").textContent = velocidade + "x"
         })
 
         document.querySelector("#velocidade_menos").addEventListener("click", async function(event) {
             velocidade -= 0.25
-            document.querySelector("#velocidade").value = velocidade
             document.querySelector("#velocidade").textContent = velocidade + "x"
         })
 
