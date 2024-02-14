@@ -67,6 +67,7 @@
     
     <h2>Toque Angola</h1>
     <p>&#10761; &#10761; &#8855; &#11044;</p>
+    <input type="checkbox" name="repetir" id="repetir">
     <button id="toque_angola2">Tocar</button>
     <input id="toque_angola_batidas" class="toque_batidas" type="text" value="0.5s tchi 0.5s tchi 0.5s domchi 1.25s dim">
 
@@ -105,6 +106,8 @@
                 event.target.value = ""
             })
         })
+
+        
 
         document.querySelector("#toque_personalizado").addEventListener("click", () => tocar(document.querySelector("#toque_personalizado_batidas").value))
         document.querySelector("#toque_angola").addEventListener("click", () => tocar(document.querySelector("#toque_angola_batidas").value))
@@ -159,7 +162,9 @@
                     batidaParteIntervalo = 1
                 }
             })
-            idsReproducao.push(setTimeout(() => tocar(batidas), timeout))
+            if (document.querySelector("#repetir").checked) {
+                idsReproducao.push(setTimeout(() => tocar(batidas), timeout))
+            }            
         }
 
         function parar() {
