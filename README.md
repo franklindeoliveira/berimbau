@@ -1,3 +1,3 @@
-# Berimbau Player
+# Berimbau
 
 Estude e pratique Berimbau.
