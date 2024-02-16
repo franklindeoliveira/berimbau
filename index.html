@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Berimbau Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <style>
         button {
             width: 50px;
@@ -19,8 +21,94 @@
             border: 1px solid #acacac;
         }
     </style>
+     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="player.css">
+    <link rel="stylesheet" href="playlist.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="player.js"></script>
 </head>
 <body>
+    <div class="container">
+        <section class="implementation">
+            <div class="now-playing-board" id="now-playing-board-id">
+                <div class="now-playing-details">
+                    <h4>Toque de Angola</h4>
+                    <h6 style="color:rgb(71,71,71);">Capoeira</h6>
+                    <div class="slidecontainer-one">
+                        <input type="range" min="1" max="100" value="1" class="slider" id="range">
+                        <div id="completionBar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="now-playing-board-bottom-bar" id="now-playing-board-bottom-bar-id">
+            </div>
+            <div class="play-controls">
+                <img src="https://pngimg.com/uploads/vinyl/vinyl_PNG21.png" width=100 height=100 id="vynl-id"
+                    class="vynl" />
+                <div class="play-buttons">
+                    <i class='fa fa-step-backward' style='font-size:20px'></i>
+                    <div class='play-circle' id="playpause" onclick="play(this)"></div>
+                    <i class='fa fa-step-forward' style='font-size:20px'></i>
+                </div>
+    
+                <div class="volume-button">
+                    <i class='fa fa-volume-up' style='font-size:15px'></i>
+                </div>
+            </div>
+            <audio id="audioSrc">
+                <source src="https://www.cjoint.com/doc/21_06/KFibDJfanp7_Queen---Radio-Ga-Ga-Official-Video-.mp3">
+            </audio>
+            <div class="player">
+                <div class="music">
+                    <div class="song-1">
+                        <div class="info">
+                            <div class="img first"></div>
+                            <div class="titles">
+                                <h5>Toque de Angola</h5>
+                                <p>Capoeira</p>
+                            </div>
+                        </div>
+                        <div class="state playing">
+                            <i class="material-icons">equalizer</i>
+                        </div>
+                    </div>
+                    <div class="song-2">
+                        <div class="info">
+                            <div class="img second"></div>
+                            <div class="titles">
+                                <h5>Toque São Bento Pequeno de Angola</h5>
+                                <p>Capoeira</p>
+                            </div>
+                        </div>
+                        <div class="state">
+                            <i class="material-icons">play_arrow</i>
+                        </div>
+                    </div>
+                    <div class="song-3">
+                        <div class="info">
+                            <div class="img third"></div>
+                            <div class="titles">
+                                <h5>Toque São Bento Grande de Angola</h5>
+                                <p>Capoeira</p>
+                            </div>
+                        </div>
+                        <div class="state">
+                            <i class="material-icons">play_arrow</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+    
+    <p>Mestres</p>
+    <ul>
+        <li>Pastinha</li>
+        <li>João Pequeno</li>
+    </ul>
 
     <h1>Toques de Berimbau</h1>
     <p>Toque nas batidas abaixo para ouvir os sons.</p>
