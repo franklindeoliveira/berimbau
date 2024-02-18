@@ -1,7 +1,7 @@
 let velocidade = 1
         let idsReproducao = [];
 
-        document.querySelector("#velocidade").textContent = velocidade + "x"
+        //document.querySelector("#velocidade").textContent = velocidade + "x"
 
         document.querySelectorAll("[data-toque]").forEach(toque => {
             let audio = new Audio(`audio/${toque.dataset.toque}.mp3`)
@@ -25,15 +25,26 @@ let velocidade = 1
 
         
 
-        document.querySelector("#toque_personalizado").addEventListener("click", () => tocar(document.querySelector("#toque_personalizado_batidas").value))
-        document.querySelector("#toque_angola").addEventListener("click", () => tocar(document.querySelector("#toque_angola_batidas").value))
-        document.querySelector("#toque_sbp").addEventListener("click", () => tocar(document.querySelector("#toque_sbp_batidas").value))
-        document.querySelector("#toque_sbg").addEventListener("click", () => tocar(document.querySelector("#toque_sbg_batidas").value))
-        document.querySelector("#toque_angola2").addEventListener("click", () => tocar(document.querySelector("#toque_angola_batidas").value))
-        document.querySelector("#toque_sbp2").addEventListener("click", () => tocar(document.querySelector("#toque_sbp_batidas").value))
-        document.querySelector("#toque_sbg2").addEventListener("click", () => tocar(document.querySelector("#toque_sbg_batidas").value))
-        document.querySelector("#parar").addEventListener("click", parar)
-        document.querySelectorAll(".parar").forEach(pararAudio => pararAudio.addEventListener("click", parar))
+        //document.querySelector("#toque_personalizado").addEventListener("click", () => tocar(document.querySelector("#toque_personalizado_batidas").value))
+        //document.querySelector("#toque_angola").addEventListener("click", () => tocar(document.querySelector("#toque_angola_batidas").value))
+        //document.querySelector("#toque_sbp").addEventListener("click", () => tocar(document.querySelector("#toque_sbp_batidas").value))
+        //document.querySelector("#toque_sbg").addEventListener("click", () => tocar(document.querySelector("#toque_sbg_batidas").value))
+        //document.querySelector("#toque_angola2").addEventListener("click", () => tocar(document.querySelector("#toque_angola_batidas").value))
+        //document.querySelector("#toque_sbp2").addEventListener("click", () => tocar(document.querySelector("#toque_sbp_batidas").value))
+        //document.querySelector("#toque_sbg2").addEventListener("click", () => tocar(document.querySelector("#toque_sbg_batidas").value))
+        //document.querySelector("#parar").addEventListener("click", parar)
+        //document.querySelectorAll(".parar").forEach(pararAudio => pararAudio.addEventListener("click", parar))
+
+        /*
+        document.querySelector("#velocidade_mais").addEventListener("click", async function(event) {
+            velocidade += 0.25
+            document.querySelector("#velocidade").textContent = velocidade + "x"
+        })
+
+        document.querySelector("#velocidade_menos").addEventListener("click", async function(event) {
+            velocidade -= 0.25
+            document.querySelector("#velocidade").textContent = velocidade + "x"
+        })*/
 
         function tocar(batidas) {
             
@@ -89,16 +100,6 @@ let velocidade = 1
             })
             idsReproducao = []
         }
-        
-        document.querySelector("#velocidade_mais").addEventListener("click", async function(event) {
-            velocidade += 0.25
-            document.querySelector("#velocidade").textContent = velocidade + "x"
-        })
-
-        document.querySelector("#velocidade_menos").addEventListener("click", async function(event) {
-            velocidade -= 0.25
-            document.querySelector("#velocidade").textContent = velocidade + "x"
-        })
 
         function tocarTchi() {
             new Audio("audio/tchi.mp3").play()
