@@ -118,10 +118,23 @@ let velocidade = 1
         }
 
         document.querySelector("#compartilhar").addEventListener("click", async function(event) {
+            const response = await fetch('https://media.istockphoto.com/id/924098198/pt/vetorial/isolated-colorful-decorative-ornate-berimbau-with-caxixi-baqueta-and-dobrao-on-white.jpg?s=612x612&w=0&k=20&c=Tw57MSFN9X2-f-1PFnztcP2V9PLvO2HtlC36nFEzEPU=');
+            const blob = await response.blob();
+            const filesArray = [
+                new File(
+                  [blob],
+                  'berimbau.jpg',
+                  {
+                    type: "image/jpeg"
+                  }
+               )
+              ];
+
             const shareData = {
                 title: "Berimbau",
                 text: "Aprenda a tocar Berimbau",
                 url: "https://franklindeoliveira.github.io/berimbau",
+                files: filesArray
             };
             await navigator.share(shareData);
         })
