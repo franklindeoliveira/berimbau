@@ -35,6 +35,9 @@
     <script src="player.js"></script>
 </head>
 <body>
+
+    <h1>Toques de Berimbau</h1>
+
     <header class="header" id="header">
         <nav class="nav container">
             <a href="#" class="nav__logo">Marlon</a>
@@ -68,7 +71,7 @@
                             <span class="nav__name">Compartilhe</span>
                         </a>
                     </li>
-                    
+
                     <li class="nav__item">
                         <a href="compor.html" class="nav__link">
                             <i class='bx bx-equalizer nav__icon'></i>
@@ -150,132 +153,11 @@
                             <i class="material-icons">play_arrow</i>
                         </div>
                     </div>
-                    <div class="song-3">
-                        <div class="info">
-                            <div class="img third"></div>
-                            <div class="titles">
-                                <h5>Toque São Bento Grande de Angola</h5>
-                                <p>Capoeira</p>
-                            </div>
-                        </div>
-                        <div class="state">
-                            <i class="material-icons">play_arrow</i>
-                        </div>
-                    </div>
-                    <div class="song-3">
-                        <div class="info">
-                            <div class="img third"></div>
-                            <div class="titles">
-                                <h5>Toque São Bento Grande de Angola</h5>
-                                <p>Capoeira</p>
-                            </div>
-                        </div>
-                        <div class="state">
-                            <i class="material-icons">play_arrow</i>
-                        </div>
-                    </div>
-                    <div class="song-3">
-                        <div class="info">
-                            <div class="img third"></div>
-                            <div class="titles">
-                                <h5>Toque São Bento Grande de Angola</h5>
-                                <p>Capoeira</p>
-                            </div>
-                        </div>
-                        <div class="state">
-                            <i class="material-icons">play_arrow</i>
-                        </div>
-                    </div>
-                    <div class="song-3">
-                        <div class="info">
-                            <div class="img third"></div>
-                            <div class="titles">
-                                <h5>Toque São Bento Grande de Angola</h5>
-                                <p>Capoeira</p>
-                            </div>
-                        </div>
-                        <div class="state">
-                            <i class="material-icons">play_arrow</i>
-                        </div>
-                    </div>
-                    <div class="song-3">
-                        <div class="info">
-                            <div class="img third"></div>
-                            <div class="titles">
-                                <h5>Toque São Bento Grande de Angola</h5>
-                                <p>Capoeira</p>
-                            </div>
-                        </div>
-                        <div class="state">
-                            <i class="material-icons">play_arrow</i>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
         
     </div>
-    
-    
-
-    <h1>Toques de Berimbau</h1>
-    <p>Toque nas batidas abaixo para ouvir os sons.</p>
-
-    <h2>Batidas (notas)</h2>
-    <ul>
-        <li><button data-toque="dom">&#128901;</button> dom - Batida com o Dobrão <em>desencostado</em> do Arame</li>
-        <li><button data-toque="dim">&#11044;</button> dim - Batida com o Dobrão <em>fortemente</em> encostada no Arame</li>
-        <li><button data-toque="tchi">&#10761;</button> tchi - Batida com o Dobrão <em>levemente</em> encostada no Arame</li>
-        <li><button data-toque="domchi">&#8855;</button> domchi - Batida "arranhando" o Dobrão no Arame</li>
-    </ul>
-
-    <ul class="playlist">
-        <li>
-            <span>1</span>
-            <button id="toque_angola">Tocar</button>
-            <button class="parar">Parar</button>
-            <span>Toque Angola</span>
-        </li>
-        <li>
-            <span>2</span>
-            <button id="toque_sbp">Tocar</button>
-            <button class="parar">Parar</button>
-            <span>Toque São Bento Pequeno de Angola</span>
-        </li>
-        <li>
-            <span>3</span>
-            <button id="toque_sbg">Tocar</button>
-            <button class="parar">Parar</button>
-            <span>Toque São Bento Grande de Angola</span>
-        </li>
-    </ul>
-
-    <h2>Controles</h1>
-    <button id="parar">Parar</button>
-    <button id="velocidade_menos">-</button>
-    <span id="velocidade">1x</span>
-    <button id="velocidade_mais">+</button>
-
-    <h2>Criei seu toque!</h1>
-    <p>1s = 1 segundo</p>
-    <button id="toque_personalizado">Tocar</button>
-    <input id="toque_personalizado_batidas" class="toque_batidas" type="text" value="1s dom 1s dim 1s tchi 1s domchi">
-    
-    <h2>Toque Angola</h1>
-    <p>&#10761; &#10761; &#8855; &#11044;</p>
-    <input type="checkbox" name="repetir" id="repetir">
-    <button id="toque_angola2">Tocar</button>
-    <input id="toque_angola_batidas" class="toque_batidas" type="text" value="0.5s tchi 0.5s tchi 0.5s domchi 1.25s dim">
-
-    <h2>Toque São Bento Pequeno de Angola</h1>
-    <p>&#10761; &#10761; &#11044; &#128901;</p>
-    <button id="toque_sbp2">Tocar</button>
-    <input id="toque_sbp_batidas" class="toque_batidas" type="text" value="0.5s tchi 0.5s tchi 0.5s dim 1s dom">
-
-    <h2>Toque São Bento Grande de Angola</h1>
-    <p>&#10761; &#10761; &#11044; &#128901; &#128901;</p>
-    <button id="toque_sbg2">Tocar</button>
-    <input id="toque_sbg_batidas" class="toque_batidas" type="text" value="0.5s tchi 0.5s tchi 0.5s dim 1s dom 0.5 dom">
     
     <script>
         let velocidade = 1
