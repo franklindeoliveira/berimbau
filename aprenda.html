@@ -42,14 +42,14 @@
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="index.html" class="nav__link active-link">
+                        <a href="index.html" class="nav__link">
                             <i class='bx bx-music nav__icon'></i>
                             <span class="nav__name">Toques</span>
                         </a>
                     </li>
                     
                     <li class="nav__item">
-                        <a href="aprenda.html" class="nav__link">
+                        <a href="aprenda.html" class="nav__link active-link">
                             <i class='bx bx-user nav__icon'></i>
                             <span class="nav__name">Aprenda</span>
                         </a>
@@ -62,13 +62,12 @@
                         </a>
                     </li>
 
-                    <li class="nav__item" id="compartilhar">
-                        <a class="nav__link">
-                            <i class='bx bx-share-alt nav__icon'></i>
+                    <li class="nav__item">
+                        <a href="#portfolio" class="nav__link">
+                            <i class='bx bx-briefcase-alt nav__icon'></i>
                             <span class="nav__name">Compartilhe</span>
                         </a>
                     </li>
-                    
                     <li class="nav__item">
                         <a href="compor.html" class="nav__link">
                             <i class='bx bx-equalizer nav__icon'></i>
@@ -81,6 +80,9 @@
             <img src="assets/img/perfil.png" alt="" class="nav__img">
         </nav>
     </header>
+    
+    <h1>Toques de Berimbau</h1>
+
     <div class="container">
         <section class="implementation">
             <div class="visor">teste</div>
@@ -114,90 +116,6 @@
             </audio>
             <div class="player">
                 <div class="music">
-                    <div class="song-1">
-                        <div class="info">
-                            <div class="img first"></div>
-                            <div class="titles">
-                                <h5>Toque de Angola</h5>
-                                <p>Capoeira</p>
-                            </div>
-                        </div>
-                        <div class="state playing">
-                            <i class="material-icons">equalizer</i>
-                        </div>
-                    </div>
-                    <div class="song-2">
-                        <div class="info">
-                            <div class="img second"></div>
-                            <div class="titles">
-                                <h5>Toque São Bento Pequeno de Angola</h5>
-                                <p>Capoeira</p>
-                            </div>
-                        </div>
-                        <div class="state">
-                            <i class="material-icons">play_arrow</i>
-                        </div>
-                    </div>
-                    <div class="song-3">
-                        <div class="info">
-                            <div class="img third"></div>
-                            <div class="titles">
-                                <h5>Toque São Bento Grande de Angola</h5>
-                                <p>Capoeira</p>
-                            </div>
-                        </div>
-                        <div class="state">
-                            <i class="material-icons">play_arrow</i>
-                        </div>
-                    </div>
-                    <div class="song-3">
-                        <div class="info">
-                            <div class="img third"></div>
-                            <div class="titles">
-                                <h5>Toque São Bento Grande de Angola</h5>
-                                <p>Capoeira</p>
-                            </div>
-                        </div>
-                        <div class="state">
-                            <i class="material-icons">play_arrow</i>
-                        </div>
-                    </div>
-                    <div class="song-3">
-                        <div class="info">
-                            <div class="img third"></div>
-                            <div class="titles">
-                                <h5>Toque São Bento Grande de Angola</h5>
-                                <p>Capoeira</p>
-                            </div>
-                        </div>
-                        <div class="state">
-                            <i class="material-icons">play_arrow</i>
-                        </div>
-                    </div>
-                    <div class="song-3">
-                        <div class="info">
-                            <div class="img third"></div>
-                            <div class="titles">
-                                <h5>Toque São Bento Grande de Angola</h5>
-                                <p>Capoeira</p>
-                            </div>
-                        </div>
-                        <div class="state">
-                            <i class="material-icons">play_arrow</i>
-                        </div>
-                    </div>
-                    <div class="song-3">
-                        <div class="info">
-                            <div class="img third"></div>
-                            <div class="titles">
-                                <h5>Toque São Bento Grande de Angola</h5>
-                                <p>Capoeira</p>
-                            </div>
-                        </div>
-                        <div class="state">
-                            <i class="material-icons">play_arrow</i>
-                        </div>
-                    </div>
                     <div class="song-3">
                         <div class="info">
                             <div class="img third"></div>
@@ -216,9 +134,6 @@
         
     </div>
     
-    
-
-    <h1>Toques de Berimbau</h1>
     <p>Toque nas batidas abaixo para ouvir os sons.</p>
 
     <h2>Batidas (notas)</h2>
@@ -229,54 +144,6 @@
         <li><button data-toque="domchi">&#8855;</button> domchi - Batida "arranhando" o Dobrão no Arame</li>
     </ul>
 
-    <ul class="playlist">
-        <li>
-            <span>1</span>
-            <button id="toque_angola">Tocar</button>
-            <button class="parar">Parar</button>
-            <span>Toque Angola</span>
-        </li>
-        <li>
-            <span>2</span>
-            <button id="toque_sbp">Tocar</button>
-            <button class="parar">Parar</button>
-            <span>Toque São Bento Pequeno de Angola</span>
-        </li>
-        <li>
-            <span>3</span>
-            <button id="toque_sbg">Tocar</button>
-            <button class="parar">Parar</button>
-            <span>Toque São Bento Grande de Angola</span>
-        </li>
-    </ul>
-
-    <h2>Controles</h1>
-    <button id="parar">Parar</button>
-    <button id="velocidade_menos">-</button>
-    <span id="velocidade">1x</span>
-    <button id="velocidade_mais">+</button>
-
-    <h2>Criei seu toque!</h1>
-    <p>1s = 1 segundo</p>
-    <button id="toque_personalizado">Tocar</button>
-    <input id="toque_personalizado_batidas" class="toque_batidas" type="text" value="1s dom 1s dim 1s tchi 1s domchi">
-    
-    <h2>Toque Angola</h1>
-    <p>&#10761; &#10761; &#8855; &#11044;</p>
-    <input type="checkbox" name="repetir" id="repetir">
-    <button id="toque_angola2">Tocar</button>
-    <input id="toque_angola_batidas" class="toque_batidas" type="text" value="0.5s tchi 0.5s tchi 0.5s domchi 1.25s dim">
-
-    <h2>Toque São Bento Pequeno de Angola</h1>
-    <p>&#10761; &#10761; &#11044; &#128901;</p>
-    <button id="toque_sbp2">Tocar</button>
-    <input id="toque_sbp_batidas" class="toque_batidas" type="text" value="0.5s tchi 0.5s tchi 0.5s dim 1s dom">
-
-    <h2>Toque São Bento Grande de Angola</h1>
-    <p>&#10761; &#10761; &#11044; &#128901; &#128901;</p>
-    <button id="toque_sbg2">Tocar</button>
-    <input id="toque_sbg_batidas" class="toque_batidas" type="text" value="0.5s tchi 0.5s tchi 0.5s dim 1s dom 0.5 dom">
-    
     <script>
         let velocidade = 1
         let idsReproducao = [];
@@ -395,15 +262,6 @@
         function tocarDom() {
             new Audio("audio/dom.mp3").play()
         }
-
-        document.querySelector("#compartilhar").addEventListener("click", async function(event) {
-            const shareData = {
-                title: "Berimbau",
-                text: "Aprenda a tocar Berimbau",
-                url: "https://franklindeoliveira.github.io/berimbau",
-            };
-            await navigator.share(shareData);
-        })
     </script>
     <script src="assets/js/main.js"></script>
 </body>

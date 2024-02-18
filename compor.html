@@ -62,15 +62,14 @@
                         </a>
                     </li>
 
-                    <li class="nav__item" id="compartilhar">
-                        <a class="nav__link">
+                    <li class="nav__item">
+                        <a href="#portfolio" class="nav__link">
                             <i class='bx bx-share-alt nav__icon'></i>
                             <span class="nav__name">Compartilhe</span>
                         </a>
                     </li>
-                    
                     <li class="nav__item">
-                        <a href="compor.html" class="nav__link">
+                        <a href="#contactme" class="nav__link">
                             <i class='bx bx-equalizer nav__icon'></i>
                             <span class="nav__name">Componha</span>
                         </a>
@@ -81,6 +80,9 @@
             <img src="assets/img/perfil.png" alt="" class="nav__img">
         </nav>
     </header>
+
+    <h1>Criei seu toque!</h1>
+    
     <div class="container">
         <section class="implementation">
             <div class="visor">teste</div>
@@ -216,11 +218,6 @@
         
     </div>
     
-    
-
-    <h1>Toques de Berimbau</h1>
-    <p>Toque nas batidas abaixo para ouvir os sons.</p>
-
     <h2>Batidas (notas)</h2>
     <ul>
         <li><button data-toque="dom">&#128901;</button> dom - Batida com o Dobrão <em>desencostado</em> do Arame</li>
@@ -228,35 +225,7 @@
         <li><button data-toque="tchi">&#10761;</button> tchi - Batida com o Dobrão <em>levemente</em> encostada no Arame</li>
         <li><button data-toque="domchi">&#8855;</button> domchi - Batida "arranhando" o Dobrão no Arame</li>
     </ul>
-
-    <ul class="playlist">
-        <li>
-            <span>1</span>
-            <button id="toque_angola">Tocar</button>
-            <button class="parar">Parar</button>
-            <span>Toque Angola</span>
-        </li>
-        <li>
-            <span>2</span>
-            <button id="toque_sbp">Tocar</button>
-            <button class="parar">Parar</button>
-            <span>Toque São Bento Pequeno de Angola</span>
-        </li>
-        <li>
-            <span>3</span>
-            <button id="toque_sbg">Tocar</button>
-            <button class="parar">Parar</button>
-            <span>Toque São Bento Grande de Angola</span>
-        </li>
-    </ul>
-
-    <h2>Controles</h1>
-    <button id="parar">Parar</button>
-    <button id="velocidade_menos">-</button>
-    <span id="velocidade">1x</span>
-    <button id="velocidade_mais">+</button>
-
-    <h2>Criei seu toque!</h1>
+    
     <p>1s = 1 segundo</p>
     <button id="toque_personalizado">Tocar</button>
     <input id="toque_personalizado_batidas" class="toque_batidas" type="text" value="1s dom 1s dim 1s tchi 1s domchi">
@@ -395,15 +364,6 @@
         function tocarDom() {
             new Audio("audio/dom.mp3").play()
         }
-
-        document.querySelector("#compartilhar").addEventListener("click", async function(event) {
-            const shareData = {
-                title: "Berimbau",
-                text: "Aprenda a tocar Berimbau",
-                url: "https://franklindeoliveira.github.io/berimbau",
-            };
-            await navigator.share(shareData);
-        })
     </script>
     <script src="assets/js/main.js"></script>
 </body>
