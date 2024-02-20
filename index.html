@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Berimbau Player</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -17,8 +17,7 @@
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="style.css">
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <script src="player.js"></script>
+    
 </head>
 <body>
 
@@ -119,8 +118,9 @@
                                 <!--p>Capoeira</p-->
                             </div>
                         </div>
-                        <div class="state playing">
-                            <i class="material-icons">equalizer</i>
+                        <div class="state playing play-audio">
+                            <i class="material-icons">play_arrow</i>
+                            <!--i class="material-icons">equalizer</i-->
                         </div>
                     </div>
                     <div class="song-2">
@@ -131,8 +131,8 @@
                                 <!--p>Capoeira</p-->
                             </div>
                         </div>
-                        <div class="state">
-                            <i class="material-icons">play_arrow</i>
+                        <div class="state play-audio">
+                            <i class="material-icons">play_arrow</i>                            
                         </div>
                     </div>
                     <div class="song-3">
@@ -143,7 +143,7 @@
                                 <!--p>Capoeira</p-->
                             </div>
                         </div>
-                        <div class="state">
+                        <div class="state play-audio">
                             <i class="material-icons">play_arrow</i>
                         </div>
                     </div>
@@ -155,6 +155,7 @@
 
     <script src="assets/js/main.js"></script>
     <script src="scripts.js"></script>
+    <script src="player.js"></script>
 
 </body>
 </html>
