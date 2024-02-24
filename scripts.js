@@ -142,23 +142,43 @@ document.querySelectorAll(".play-audio").forEach(audioPlay => audioPlay.addEvent
 
 function playAudio(event) {
     console.log(`tocando audio ...`)
-    console.log(event.currentTarget)
-    let play = event.currentTarget.querySelector("i")
-    console.log(play.textContent)
+    let tituloAudio = event.currentTarget.parentElement.querySelector("h5").textContent
+    document.querySelector("#titulo_audio_tocando").textContent = tituloAudio
+    document.querySelector("#visor_titulo_audio_tocando").textContent = tituloAudio
 
-    let playState = play.textContent
+    if (tituloAudio == "Toque de Angola") {
+        document.querySelector("#visor_simbolos_audio_tocando").innerHTML = "&#10761; &#10761; &#11044; &#128901; &#128901;"
+    } else if (tituloAudio == "Toque São Bento Pequeno de Angola") {
+        document.querySelector("#visor_simbolos_audio_tocando").innerHTML = "&#10761; &#10761; &#11044; &#128901;"
+    } else if (tituloAudio == "Toque São Bento Grande de Angola") {
+        document.querySelector("#visor_simbolos_audio_tocando").innerHTML = "&#10761; &#10761; &#11044; &#128901; &#128901;"
+    }
+    
+    
+    console.log(event.currentTarget)
+    let playIcon = event.currentTarget.querySelector("i")
+    console.log(playIcon.textContent)
+
+    console.log(playIcon)
+
+    let playState = playIcon.textContent
 
     document.querySelectorAll(".play-audio").forEach(audioPlay => {
-        audioPlay.querySelector("i").textContent = "stop"
-        audioPlay.classList.remove("playing")        
+        audioPlay.querySelector("i").textContent = "play_arrow"
+        audioPlay.classList.add("stop")
+        audioPlay.classList.remove("playing")
     })
 
-    event.currentTarget.classList.add("playing")
-
     if (playState == "stop") {
-        play.textContent = "play_arrow"
-    } else {
-        play.textContent = "stop"
         event.currentTarget.classList.remove("playing")
+        event.currentTarget.classList.add("stop")
+        playIcon.textContent = "play_arrow"    
+    } else {
+        event.currentTarget.classList.remove("stop")
+        event.currentTarget.classList.add("playing")
+        playIcon.textContent = "stop"    
     }
+    parar()
+    play(event.currentTarget)
+
 }

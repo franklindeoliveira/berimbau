@@ -70,20 +70,18 @@
         </nav>
     </header>
 
-    
-
     <div class="container">
         <h1>Toques de Berimbau</h1>
 
         <section class="implementation">
             <div class="visor">
-                <span class="visor__titulo">Toque de Angola</span>
-                <p>&#10761; &#10761; &#11044; &#128901; &#128901;</p>
+                <span class="visor__titulo" id="visor_titulo_audio_tocando"></span>
+                <p id="visor_simbolos_audio_tocando"></p>
             </div>
-            <div class="now-playing-board" id="now-playing-board-id">
+            <div class="now-playing-board" id="now-playing-board-id" style="visibility: hidden;">
                 <div class="now-playing-details">
-                    <h4>Toque de Angola</h4>
-                    <h6 style="color:rgb(71,71,71);">Capoeira</h6>
+                    <h4 id="titulo_audio_tocando"></h4>
+                    <h6 id="categoria_audio_tocando" style="color:rgb(71,71,71);">Capoeira123</h6>
                     <div class="slidecontainer-one">
                         <input type="range" min="1" max="100" value="1" class="slider" id="range">
                         <div id="completionBar"></div>
@@ -118,7 +116,7 @@
                                 <!--p>Capoeira</p-->
                             </div>
                         </div>
-                        <div class="state playing play-audio">
+                        <div class="state play-audio" data-toque2="angola">
                             <i class="material-icons">play_arrow</i>
                             <!--i class="material-icons">equalizer</i-->
                         </div>
@@ -131,7 +129,7 @@
                                 <!--p>Capoeira</p-->
                             </div>
                         </div>
-                        <div class="state play-audio">
+                        <div class="state play-audio" data-toque2="sbp">
                             <i class="material-icons">play_arrow</i>                            
                         </div>
                     </div>
@@ -143,7 +141,7 @@
                                 <!--p>Capoeira</p-->
                             </div>
                         </div>
-                        <div class="state play-audio">
+                        <div class="state play-audio" data-toque2="sbg">
                             <i class="material-icons">play_arrow</i>
                         </div>
                     </div>
@@ -154,8 +152,8 @@
     </div>
 
     <script src="assets/js/main.js"></script>
-    <script src="scripts.js"></script>
     <script src="player.js"></script>
+    <script src="scripts.js"></script>
 
 </body>
 </html>

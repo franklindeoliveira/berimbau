@@ -34,11 +34,22 @@ function play(element) {
       console.log(' ' + completionBar.style.width);
     }
   };
-  if (isPlay()) {
+  if (isPlay(element)) {
     vynlId.classList.add("vynl-animation");
 
     //document.getElementById("audioSrc").play();
-    tocar("0.5s tchi 0.5s tchi 0.5s domchi 1.25s dim")
+    
+    console.log("############# element.dataset.toque2")
+    console.log(element.dataset.toque2)
+    if (element.dataset.toque2 == "angola") {
+      tocar("0.5s tchi 0.5s tchi 0.5s domchi 1.25s dim")
+    } else if (element.dataset.toque2 == "sbp") {
+      tocar("0.5s tchi 0.5s tchi 0.5s dim 1s dom")
+    } else if (element.dataset.toque2 == "sbg") {
+      tocar("0.5s tchi 0.5s tchi 0.5s dim 1s dom 0.5s dom")
+    } else {
+      tocar("0.5s tchi 0.5s tchi 0.5s domchi 1.25s dim")
+    }
 
     nowPlayingBoardId.style.transform = "translatey(-30%)";
     nowPlayingBoardBottomBarId.style.transform = "translatey(0)";
@@ -46,7 +57,7 @@ function play(element) {
     document.getElementById("playpause").classList.remove("play-circle");
     document.getElementById("playpause").classList.add("pause-circle");
   }
-  else if (isPause()) {
+  else if (isPause(element)) {
     vynlId.classList.remove("vynl-animation");
 
     //document.getElementById("audioSrc").pause(); 
@@ -56,13 +67,19 @@ function play(element) {
 
     document.getElementById("playpause").classList.remove("pause-circle");
     document.getElementById("playpause").classList.add("play-circle");
+
+    parar()
   }
 }
 
-function isPlay() {  
-  return document.getElementById("playpause").classList.contains("play-circle")
+function isPlay(element) {
+  let isPlaylistPlay = document.getElementById("playpause").classList.contains("play-circle")
+  let isAudioPlay = element.classList.contains("playing")
+  return isPlaylistPlay || isAudioPlay
 }
 
-function isPause() {  
-  return document.getElementById("playpause").classList.contains("pause-circle")
+function isPause(element) {  
+  let isPlaylistPause = document.getElementById("playpause").classList.contains("pause-circle")
+  let isAudioPause = element.classList.contains("stop")
+  return isPlaylistPause || isAudioPause
 }
