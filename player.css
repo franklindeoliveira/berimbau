@@ -60,7 +60,7 @@ body
 {
   font-family: "Lucida Console", Courier, monospace;
   width:180px;
-  margin: 0px;
+  margin-bottom: 5px;
   margin-top:5px;
   color:black;
   opacity:1;
@@ -70,7 +70,7 @@ body
 /* seek bar style */
 
 .slidecontainer-one {
-  width: 90%;
+  width: 100%;
   position:relative;
 }
 #completionBar {
@@ -120,21 +120,24 @@ position:absolute;
 {
   height:70px;
   width: 100%;
-  margin-top:-20%;
   background:white;
   border-radius: 10px 10px 0 0;
   display:flex;
-  justify-content: space-around;
   align-items: center;
   z-index:2;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-/*   visibility: hidden; */
+  gap: 10px;
+  padding: 10px;
+}
+
+.play-controls__controls {
+  width: 100%;
 }
 
 .vynl
 {
-  margin-top:-14%;
-  margin-left:-4%;
+  max-width: 60px;
+  aspect-ratio: 1;
 }
 
 .vynl-animation
@@ -153,7 +156,6 @@ position:absolute;
 
 .play-buttons
 {
-  width:100px;
   height:30px;
   display:flex;
   justify-content:space-around;
